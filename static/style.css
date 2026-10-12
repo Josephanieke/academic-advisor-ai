@@ -1,0 +1,23 @@
+:root { --ink: #172033; --muted: #5d677c; --paper: #f6f8fc; --line: #dce2ec; --blue: #295cc7; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.shell { max-width: 960px; margin: 0 auto; padding: 64px 24px; }
+.intro { max-width: 670px; margin-bottom: 28px; }
+.eyebrow { color: var(--blue); font-size: .78rem; font-weight: 800; letter-spacing: .09em; }
+h1 { font-size: clamp(2.3rem, 6vw, 4.3rem); letter-spacing: -.055em; line-height: 1; margin: 10px 0 18px; }
+.intro > p:not(.eyebrow) { color: var(--muted); font-size: 1.1rem; }
+.notice { border-left: 3px solid #d1a800; padding-left: 12px; font-size: .9rem !important; }
+.panel { background: white; border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 12px 30px #1a31520d; padding: 28px; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+label { color: #344158; display: grid; font-size: .88rem; font-weight: 700; gap: 7px; }
+input, select { appearance: none; border: 1px solid #bbc5d4; border-radius: 8px; color: var(--ink); font: inherit; padding: 11px 12px; }
+input:focus, select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px #295cc721; outline: 0; }
+button { background: var(--blue); border: 0; border-radius: 8px; color: white; cursor: pointer; font: inherit; font-weight: 750; margin-top: 24px; padding: 12px 18px; }
+button:hover { background: #1f4ca8; }
+.error { background: #fff0f0; border: 1px solid #f0b8b8; border-radius: 8px; color: #9f2020; margin: 22px 0 0; padding: 12px; }
+.result { border-top: 1px solid var(--line); display: grid; gap: 24px; grid-template-columns: 190px 1fr; margin-top: 28px; padding-top: 28px; }
+.result-title span, .result-title small { display: block; color: var(--muted); font-size: .85rem; }
+.result-title strong { display: block; font-size: 2.15rem; letter-spacing: -.04em; }
+.high .result-title strong { color: #b12727; } .medium .result-title strong { color: #a16a00; } .low .result-title strong { color: #16814d; }
+h2 { font-size: 1rem; margin: 0 0 6px; } ul { margin: 0 0 18px; padding-left: 20px; } .plan { background: #eef4ff; border-radius: 8px; margin: 0; padding: 12px; }
+@media (max-width: 620px) { .shell { padding: 36px 16px; } .panel { padding: 20px; } .grid, .result { grid-template-columns: 1fr; } }

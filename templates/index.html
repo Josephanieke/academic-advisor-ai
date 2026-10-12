@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Academic Advisor AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="shell">
+    <section class="intro">
+      <p class="eyebrow">CSC 303 · AI-ASSISTED DECISION SUPPORT</p>
+      <h1>Academic Advisor AI</h1>
+      <p>Enter your current academic profile to receive explainable, personalised study advice.</p>
+      <p class="notice">This prototype supports—not replaces—your department’s academic adviser.</p>
+    </section>
+
+    <section class="panel">
+      <form method="post" novalidate>
+        <div class="grid">
+          <label>CGPA (0.00–5.00)
+            <input required step="0.01" min="0" max="5" name="gpa" type="number" value="{{ submitted.get('gpa', '') }}" placeholder="e.g. 3.25">
+          </label>
+          <label>Failed / carry-over courses
+            <input required min="0" max="6" name="failed_courses" type="number" value="{{ submitted.get('failed_courses', '0') }}">
+          </label>
+          <label>Attendance (%)
+            <input required min="0" max="100" name="attendance" type="number" value="{{ submitted.get('attendance', '') }}" placeholder="e.g. 80">
+          </label>
+          <label>Independent study hours / week
+            <input required min="0" max="40" name="hours_per_week" type="number" value="{{ submitted.get('hours_per_week', '') }}" placeholder="e.g. 15">
+          </label>
+          <label>Current level
+            <select name="level" required>
+              <option value="">Select level</option>
+              {% for option in [100, 200, 300, 400, 500] %}
+              <option value="{{ option }}" {% if submitted.get('level') == option|string %}selected{% endif %}>{{ option }} Level</option>
+              {% endfor %}
+            </select>
+          </label>
+        </div>
+        <button type="submit">Get my academic plan</button>
+      </form>
+
+      {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+
+      {% if advice %}
+      <article class="result {{ advice.priority|lower }}">
+        <div class="result-title">
+          <span>Recommended priority</span>
+          <strong>{{ advice.priority }}</strong>
+          <small>Model confidence: {{ advice.confidence }}%</small>
+        </div>
+        <div>
+          <h2>Your next steps</h2>
+          <ul>{% for action in advice.actions %}<li>{{ action }}</li>{% endfor %}</ul>
+          <h2>Why this advice?</h2>
+          <ul>{% for reason in advice.reasons %}<li>{{ reason }}</li>{% endfor %}</ul>
+          <p class="plan"><strong>Study plan:</strong> {{ advice.study_plan }}</p>
+        </div>
+      </article>
+      {% endif %}
+    </section>
+  </main>
+</body>
+</html>

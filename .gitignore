@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Environment and editor files
+.env
+.DS_Store
+.vscode/settings.json
+
+# Test/build output
+htmlcov/
+.coverage

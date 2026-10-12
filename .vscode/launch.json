@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Flask Academic Advisor",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "flask",
+      "env": {"FLASK_APP": "app.py", "FLASK_DEBUG": "1"},
+      "args": ["run"]
+    }
+  ]
+}
