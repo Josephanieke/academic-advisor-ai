@@ -46,8 +46,9 @@ Academic_Advisor_Colab.ipynb    # Colab-ready training notebook
 ## Google Colab workflow
 
 1. Upload `Academic_Advisor_Colab.ipynb` to [Google Colab](https://colab.research.google.com/).
-2. Run every cell. The final cell downloads `academic_advisor_model.pkl`.
-3. Place that downloaded file in `models/` and run the Flask app. This demonstrates the model was built in Colab and deployed locally.
+2. Run every cell. When prompted, upload this project's `advisor_model.py`; this keeps the exported model compatible with the Flask app.
+3. The final cell downloads `academic_advisor_model.pkl`.
+4. Place that downloaded file in `models/` and run the Flask app. This demonstrates the model was built in Colab and deployed locally.
 
 ## Git and GitHub checklist
 
